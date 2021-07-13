@@ -1,4 +1,11 @@
+#從舊檔案讀取
 products = []
+with open('products.csv', 'r', encoding = 'utf-8') as f: #編碼問題在讀取跟寫入時都會出現，所以要統一
+    for line in f:
+        name, price = line.strip().split(',') #每一行去掉換行符號後，用split在,處分隔，並分別存入name price
+        products.append([name, price])
+print(products)
+
 while True:
     name = input('請輸入商品名稱: ')
     if name == 'q':
